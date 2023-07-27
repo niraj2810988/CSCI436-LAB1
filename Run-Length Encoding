@@ -1,0 +1,24 @@
+def run_length_encode(s):
+    encoded_string = ""
+    count = 1
+
+    for i in range(1, len(s)):
+        if s[i] == s[i - 1]:
+            count += 1
+        else:
+            encoded_string += s[i - 1]
+            if count > 1:
+                encoded_string += str(count)
+            count = 1
+
+    encoded_string += s[-1]
+    if count > 1:
+        encoded_string += str(count)
+
+    return encoded_string
+
+# Test the function
+A=input("Enter Your Message:")
+compressed_message = run_length_encode(A)
+print("Original string:", A)
+print("Compressed string:", compressed_message)
